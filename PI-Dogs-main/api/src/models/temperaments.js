@@ -20,4 +20,5 @@ module.exports = (sequelize) => {
     timestamps: false
   }
   );
-};
+};//falta tabla intermedia
+

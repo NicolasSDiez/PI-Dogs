@@ -1,7 +1,8 @@
 const axios = require('axios');
 const URL_BASE = 'https://api.thedogapi.com/v1'
+const IMAGE_URL = 'https://cdn2.thedogapi.com'
 
-const getDogsApi = async () => {
+const getAllDogsApi = async () => {
     try {
         const  { data } = await axios(`${URL_BASE}/breeds`)
         const dogs = data.map(breed => {
@@ -9,7 +10,7 @@ const getDogsApi = async () => {
             return {
                 id: breed.id,
                 nombre: breed.name,
-                //imagen: (`${URL_BASE}/images/${idImagen}.jpg`), //a chequear
+                imagen: (`${IMAGE_URL}/images/${imageId}.jpg`), //a chequear
                 altura: breed.height,
                 peso: breed.weight,
                 longevidad: breed.life_span,
@@ -23,4 +24,4 @@ const getDogsApi = async () => {
     }
 }
 
-module.exports = getDogsApi;
+module.exports = {getAllDogsApi};
