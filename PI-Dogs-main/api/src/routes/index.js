@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const { getDogsHandler } = require('../handllers/getDogsHandler')
-const { getDogsDetailHandler } = require('../handllers/getDogsDetailHandler')
-const { getDogsNameHandler } = require('../handllers/getDogsNameHandler')
-const { postDogsHandler } = require('../handllers/postDogsHandler')
-const { getTempHandler } = require('../handllers/getTempHandler')
+const { getDogsHandler } = require('../handlers/getDogsHandler')
+const { getDogsDetailHandler } = require('../handlers/getDogsDetailHandler')
+const { getDogsNameHandler } = require('../handlers/getDogsNameHandler')
+const { postDogsHandler } = require('../handlers/postDogsHandler')
+const { getTempHandler } = require('../handlers/getTempHandler')
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');

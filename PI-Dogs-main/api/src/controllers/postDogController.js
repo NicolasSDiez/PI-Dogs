@@ -1,4 +1,4 @@
-const { Dog, Temperament } = require ('../db')
+const { Dog, Temperament } = require('../db')
 
 const createNewDog = async (dogData) => {
     try {
@@ -14,8 +14,9 @@ const createNewDog = async (dogData) => {
             longevidad,
             isDB: true
         });
-        if (dogData.temperaments && dogData.temperaments.length > 0) {
-            const temperaments = await Temperament.findAll({
+        //si en dogdata existe la prop temperament y si esta es un array con al menos 1 elem ( hay)
+        if (dogData.temperaments && dogData.temperaments.length > 0) { 
+            const temperaments = await Temperament.findAll({//busca en el modelo de la BDD. findall (ORM-sequelize)
                 where: {
                     name: dogData.temperaments,
                 }
