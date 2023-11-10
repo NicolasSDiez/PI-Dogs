@@ -1,5 +1,5 @@
-const { getAllDogsApi } = require('../controllers/getAllDogsApi')
-const { getAllDogsBdd } = require('../controllers/getAllDogsBdd')
+const { getAllDogsApi } = require('../controllers/getAllDogsApiController')
+const { getAllDogsBdd } = require('../controllers/getAllDogsBddController')
 
 const getDogsHandler = async (req, res) => {
     try {
