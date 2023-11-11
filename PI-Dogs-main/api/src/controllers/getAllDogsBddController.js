@@ -1,9 +1,9 @@
-const { Dog, Temperament } = require('../db')
+const { Dog, Temperaments } = require('../db')
 
 const getAllDogsDbb = async ()=> {
     try {
         const dogsBDD = await Dog.findAll({
-            include : Temperament
+            include : Temperaments
         });
         return dogsBDD
     } catch (error) {
