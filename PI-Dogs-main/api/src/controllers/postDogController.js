@@ -1,8 +1,8 @@
-const { Dog, Temperament } = require('../db')
+const { Dog, Temperaments } = require('../db')
 
-const createNewDog = async (dogData) => {
+const createNewDog = async (imagen, nombre, altura, peso, longevidad, temperaments) => {
     try {
-        const { imagen, nombre, altura, peso, longevidad } = await dogData
+        
         if (!imagen || !nombre || !altura || !peso || !longevidad){ 
             throw Error('Faltan datos.')
         }
@@ -15,19 +15,29 @@ const createNewDog = async (dogData) => {
             isDB: true
         });
         //si en dogdata existe la prop temperament y si esta es un array con al menos 1 elem ( hay)
-        if (dogData.temperaments && dogData.temperaments.length > 0) { 
-            const temperaments = await Temperament.findAll({//busca en el modelo de la BDD. findall (ORM-sequelize)
+        // if (temperaments && temperaments.length > 0) { 
+        //     const temperaments = await Temperaments.findAll({//busca en el modelo de la BDD. findall=>(ORM-sequelize)
+        //         where: {
+        //             name: temperaments,
+        //         }
+        //     })
+        //     await newDog.setTemperaments(temperaments);
+        // }
+        
+     
+            const temperamento = await Temperaments.findAll({
                 where: {
-                    name: dogData.temperaments,
+                    nombre: temperaments,
                 }
             })
-            await newDog.setTemperaments(temperaments);
-        }
+            await newDog.setTemperaments(temperamento);
+        
 
         return newDog;
+        
     } catch (error) {
         throw error;
     }
 }
 
-module.exports = { createNewDog };
+module.exports =  createNewDog;
