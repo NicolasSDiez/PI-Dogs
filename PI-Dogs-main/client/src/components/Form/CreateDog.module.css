@@ -1,0 +1,85 @@
+.login-root {
+    background: #fff;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .loginbackground {
+    min-height: 692px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .formContainer {
+    margin: 90px auto;
+    width: 100%;
+    max-width: 448px;
+    background-color: rgba(68, 50, 42, 0.3);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 48px;
+    color: #FAFAFA;
+  }
+  
+  .label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .inputField {
+    font-size: 16px;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgba(84, 105, 212, 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  }
+  
+  .buttonContainer {
+    background-color: #44322A;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 4px;
+  }
+  
+  
+  .error-message {
+    color: #FF0000; 
+    font-size: 14px;
+    margin-top: 5px; 
+  }
+  
+  .success-message {
+    color: #00FF00;
+    font-size: 14px;
+    margin-top: 5px; 
+  }
