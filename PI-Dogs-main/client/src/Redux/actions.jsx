@@ -59,7 +59,7 @@ export const createDog = (dogData) => {
       console.log("El perro fue creado exitosamente");
       return dispatch({
         type: CREATE_DOG,
-        payload: fetchDogs(),
+        payload: await fetchDogs(),
       });
     } catch (error) {
       console.error(error.message);
