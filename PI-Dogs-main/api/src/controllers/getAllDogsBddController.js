@@ -2,7 +2,7 @@ const { Dog, Temperaments } = require('../db')
 
 const getAllDogsDbb = async ()=> {
     try {
-        const dogsBDD = await Dog.findAll({
+        const dogsBDD = await Dog.findAll({ // metodo de sequelize
             include :{
                 model: Temperaments,
                 attributes: {exclude: ["UUID"]},

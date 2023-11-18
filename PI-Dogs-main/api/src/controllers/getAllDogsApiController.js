@@ -7,7 +7,7 @@ const getAllDogsApi = async () => {
         const  { data } = await axios(`${URL_BASE}/breeds`)
         console.log(data)
         const dogs = data.map(breed => {
-            const imageId = breed.reference_image_id;
+            const imageId = breed.reference_image_id; //referencia de la imagen de la breed
             return {
                 id: breed.id,
                 nombre: breed.name,
