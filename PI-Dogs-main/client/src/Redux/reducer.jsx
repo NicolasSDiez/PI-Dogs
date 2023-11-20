@@ -3,13 +3,15 @@ import {
   GET_DOGS,
   TEMPERAMENT,
   FILTER_TEMPERAMENT,
-  FILTER_ORIGIN
+  FILTER_ORIGIN,
+  GET_DOG_ID
 } from "./actions-types";
 
 const initialState = {
   allDogs: [],
   dogs: [],
   temperament: [],
+  detail: []
 };
 
 const reducer = (state = initialState, actions) => {
@@ -67,10 +69,17 @@ const reducer = (state = initialState, actions) => {
         temperament: actions.payload,
       };
 
+      case GET_DOG_ID:
+      return {
+        ...state,
+        detail: actions.payload,
+      };
+
     default:
       return {
         ...state,
       };
+
   }
 };
 

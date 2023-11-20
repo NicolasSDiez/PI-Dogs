@@ -4,7 +4,8 @@ import {
   CREATE_DOG,
   TEMPERAMENT,
   FILTER_TEMPERAMENT,
-  FILTER_ORIGIN
+  FILTER_ORIGIN,
+  GET_DOG_ID
 } from "./actions-types";
 
 export const fetchDogs = () => {
@@ -65,4 +66,21 @@ export const createDog = (dogData) => {
       console.error(error.message);
     }
   };
+
+
 };
+
+export const getId = (id)=>{
+  return async (dispatch) => {
+    try {
+      const {data} = await axios(`http://localhost:3001/dogs/${id}`);
+      dispatch({
+        type: GET_DOG_ID,
+        payload: data,
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+}
