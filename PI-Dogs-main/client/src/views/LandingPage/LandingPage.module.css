@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
-body,
+/* body, */
 .landing-page {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 .landing-page {
@@ -16,11 +16,11 @@ body,
   width: 100vw;
   font-family: Poppins, sans-serif;
   font-size: 16px;
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  padding-left: 10%;
-  padding-top: 1.5%;
+  /* display: flex;
+  justify-content: left; */
+  /* align-items: left; */
+  /* padding-left: 10%;
+  padding-top: 1.5%; */
 }
 
 .content {
@@ -42,7 +42,7 @@ body,
   color: rgba(255, 255, 255, 0.01);
   background-image: url("../../assets/img/text.jpg");
   background-repeat: repeat;
-  background-clip: text;
+  -webkit-background-clip: text;
   animation: animateText 15s ease-in-out infinite;
   text-transform: uppercase;
   font-weight: 900;

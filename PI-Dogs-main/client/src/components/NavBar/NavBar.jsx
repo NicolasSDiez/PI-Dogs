@@ -8,7 +8,7 @@ const NavBar = () => {
       <ul>
         <li>
           <Link to="/home">Home</Link>
-          <Link to="/create-dog">Crea a tu mascota!</Link>
+          <Link to="/create-dog">¡Create your pet!</Link>
         </li>
       </ul>
     </nav>

@@ -1,9 +1,28 @@
 .container{
+    background-color: blue;
     border: 1px solid black;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-radius: 15px;
-    flex-wrap: wrap;    
-    gap: 1em;
+    /* flex-wrap: wrap;     */
+    height:auto;   
+    align-items: center;
+    width: 400px;
+    margin: 10px;
+    
+    
+    text-align: center;
+    
 }
 
+.container h2,.container h3{
+    background-color: green;
+   padding: none;
+}
+
+
+.img{
+    width: 200px;
+    height: auto;
+    padding-top: 10px;
+}

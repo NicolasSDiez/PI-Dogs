@@ -8,13 +8,11 @@ import {Link} from 'react-router-dom'
 const CardContainer = ({imagen, nombre, temperamento, peso, id})=>{
    
     const dogs = useSelector((state)=>state.dogs);
-    console.log(temperamento)
+    //console.log(temperamento)
     
     return(
         <div className={style.container}>
-           <div>
-
-            <img src={imagen} alt={nombre}/></div>
+           <img src={imagen} alt={nombre} className={style.img}/>
            <h2>{nombre}</h2>
            <h3>{temperamento?.join(", ")}</h3>
            <h3>{peso.metric}</h3>
@@ -23,8 +21,3 @@ const CardContainer = ({imagen, nombre, temperamento, peso, id})=>{
     )
 }
 export default CardContainer;
-/*
-Imagen.
-Nombre.
-Temperamentos.
-Peso.* */

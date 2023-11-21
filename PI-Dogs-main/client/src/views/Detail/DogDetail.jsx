@@ -27,17 +27,3 @@ const DogDetail = ()=>{
     }
     
     export default DogDetail;
-/*
-ID.
-Imagen.
-Nombre.
-Altura.
-Peso.
-Temperamentos.
-Años de vida.*/
-    /*
-    imagen= reference_image_id"=string
-    name= name=string
-    temperament= strings varios
-    peso=obj= imperial,metric
-    */

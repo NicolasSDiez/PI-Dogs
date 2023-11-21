@@ -10,7 +10,7 @@ function LandingPage() {
       <h1 className={styles['animated-text']}>furry friend</h1>
       <div className={styles['button-container']}>
         <Link to="/home">
-        <button className={styles.button}>Vamos!</button>
+        <button className={styles.button}>¡Welcome!</button>
         </Link>
         </div>
       </div>

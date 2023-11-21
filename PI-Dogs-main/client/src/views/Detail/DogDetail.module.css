@@ -1,11 +1,13 @@
 .card{
-    border: 1px solid rgb(183, 124, 124);
+    border: 2px solid rgb(183, 124, 124);
     width: fit-content;
     height: fit-content;
     border-radius: 15px;
 }
 
 .card img{
-    height: 400px;
+    
+    height: 300px;
     width: auto;
+    border-radius: 15px
 }
