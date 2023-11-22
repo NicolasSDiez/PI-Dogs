@@ -44,7 +44,7 @@
   background-repeat: repeat;
   -webkit-background-clip: text;
   animation: animateText 15s ease-in-out infinite;
-  text-transform: uppercase;
+  padding-left: 70px;
   font-weight: 900;
   justify-content: flex-start;
 }

@@ -3,6 +3,9 @@
     width: fit-content;
     height: fit-content;
     border-radius: 15px;
+    
+    text-align: center;
+    
 }
 
 .card img{

@@ -7,7 +7,7 @@
   }
 
   .container{
-    background-color: #00FF00;
+    
     width: 100vw;
   }
   
@@ -23,12 +23,11 @@
   }
   
   .formContainer {
-   
+    
     margin:  auto;
     width: 100%;
     max-width: 448px;
-    /* background-color: rgba(68, 50, 42, 0.3); */
-    background-color: violet;
+    background-color: rgba(68, 50, 42, 0.3);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 48px;

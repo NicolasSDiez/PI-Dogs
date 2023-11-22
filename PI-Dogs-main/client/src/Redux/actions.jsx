@@ -74,6 +74,7 @@ export const getId = (id)=>{
   return async (dispatch) => {
     try {
       const {data} = await axios(`http://localhost:3001/dogs/${id}`);
+      //console.log("esto es el perruqui", data);
       dispatch({
         type: GET_DOG_ID,
         payload: data,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardContainer from "../../Components/CardContainer/CardContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDogs } from "../../Redux/actions";
+import { Temperaments, fetchDogs } from "../../Redux/actions";
 import style from './HomePage.module.css'
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import Pagination from "../../Components/Pagination/Pagination";
@@ -17,13 +17,21 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchDogs());
+    dispatch(Temperaments());
   }, [dispatch]);
 
+
+
+  const allDogs = useSelector((state) => state.allDogs);
   // Función para manejar la búsqueda de perros por nombre:
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-    // setCurrentPage();
-  };
+     const handleSearch = (term) => {    
+    const results = allDogs.filter((dog) =>
+      dog.nombre.toLowerCase().includes(term.toLowerCase())
+      );      
+    setSearchResults(results);
+    setCurrentPage(1);
+    
+  }; 
 
   const filteredDogs = searchResults.length > 0 ? searchResults : dogs;
 

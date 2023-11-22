@@ -9,7 +9,9 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleSearch = () => {
+   // console.log('Searching for:', searchTerm);
     onSearch(searchTerm);
+
   };
 
   return (

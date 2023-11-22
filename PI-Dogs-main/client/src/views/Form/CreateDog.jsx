@@ -1,15 +1,15 @@
-import React from "react";
-import { createDog } from "../../Redux/actions";
+import React, { useEffect } from "react";
+import { Temperaments, createDog } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "../Form/CreateDog.module.css";
 
 const CreateDog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperaments = useSelector(state => state.temperament);
-
+  console.log("lista de temperamentos", temperaments);
   const [form, setForm] = useState({
     imagen: "",
     nombre: "",
@@ -21,13 +21,18 @@ const CreateDog = () => {
     temperamento: [],
   });
 
+  useEffect(() => {    
+    dispatch(Temperaments());
+  }, [dispatch]);
+  
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [minHeightError, setMinHeightError] = useState("");
   const [maxHeightError, setMaxHeightError] = useState("");
   const [minWeightError, setMinWeightError] = useState("");
   const [maxWeightError, setMaxWeightError] = useState("");
-
+  
+  
   const validateName = (name) => {
     if (/\d/.test(name)) {
       return "Name should not contain numbers";
@@ -153,6 +158,8 @@ const CreateDog = () => {
       });
   };
 
+  
+
   return (
     <div className={styles.container}>
      
@@ -257,9 +264,9 @@ const CreateDog = () => {
           <label>
             Temperaments:
             <select className={styles.select} multiple value={form.temperamento} onChange={handleTemperamentChange}>
-              {temperaments.map((temperament) => (
-                <option key={temperament.id} value={temperament.name}>
-                  {temperament.name}
+              {temperaments.map((temperament, index) => (
+                <option key={index} value={temperament.nombre}>
+                  {temperament.nombre}
                 </option>
               ))}
             </select>
