@@ -9,7 +9,7 @@ const CreateDog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperaments = useSelector(state => state.temperament);
-  console.log("lista de temperamentos", temperaments);
+  // console.log("lista de temperamentos", temperaments);
   const [form, setForm] = useState({
     imagen: "",
     nombre: "",

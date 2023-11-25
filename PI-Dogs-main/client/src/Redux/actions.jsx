@@ -28,7 +28,7 @@ export const Temperaments = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
-      console.log(data);
+      console.log("datos de temperamentos", data);
       return dispatch({
         type: TEMPERAMENT,
         payload: data,

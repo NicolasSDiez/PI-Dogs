@@ -1,5 +1,3 @@
-import { GET_DOGS } from '../../Redux/actions-types';
-
 import style from './CardContainer.module.css'
 import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -8,7 +6,7 @@ import {Link} from 'react-router-dom'
 const CardContainer = ({imagen, nombre, temperamento, peso, id})=>{
    
     const dogs = useSelector((state)=>state.dogs);
-    //console.log(temperamento)
+   
     
     return(
         <div className={style.container}>
