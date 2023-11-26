@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import {CreateDog, DogDetail, HomePage, LandingPage} from './views'
 import './App.css'
 import NavBar from './Components/NavBar/NavBar';
-
+import { Temperaments, fetchDogs } from './Redux/actions';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDogs());
+    dispatch(Temperaments());
+    //setLoading(false)
+  }, [dispatch]);
+
   const location = useLocation();
     return (
     <div>       

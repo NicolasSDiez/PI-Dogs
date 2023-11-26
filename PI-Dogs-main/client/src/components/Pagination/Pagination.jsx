@@ -16,6 +16,14 @@ const Pagination = ({
     onPageChange(currentPage + 1);
   };
 
+  const handleFirstPageClick = () => {
+    onPageChange(1);
+  };
+
+  const handleLastPageClick = () => {
+    onPageChange(totalPages);
+  };
+
   const handlePageClick = (pageNumber) => {
     onPageChange(pageNumber);
   };
@@ -55,6 +63,13 @@ const Pagination = ({
       <button
         className={styles.paginationButton}
         disabled={currentPage === 1}
+        onClick={handleFirstPageClick}
+      >
+        First
+      </button>
+      <button
+        className={styles.paginationButton}
+        disabled={currentPage === 1}
         onClick={handlePrevClick}
       >
         Prev
@@ -66,6 +81,13 @@ const Pagination = ({
         onClick={handleNextClick}
       >
         Next
+      </button>
+      <button
+        className={styles.paginationButton}
+        disabled={currentPage === totalPages}
+        onClick={handleLastPageClick}
+      >
+        Last
       </button>
     </div>
   );

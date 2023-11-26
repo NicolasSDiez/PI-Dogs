@@ -3,7 +3,7 @@ import style from './DogDetail.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getId } from '../../Redux/actions';
-
+import { Link } from 'react-router-dom';
 
 const DogDetail = ()=>{
     const {id}= useParams();
@@ -16,6 +16,8 @@ const DogDetail = ()=>{
     
 return (
     <>
+    <Link to="/home"> Home
+      </Link> 
       {
         isNaN(id) ?
           

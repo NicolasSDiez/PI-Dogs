@@ -5,7 +5,9 @@ import {
   TEMPERAMENT,
   FILTER_TEMPERAMENT,
   FILTER_ORIGIN,
-  GET_DOG_ID
+  GET_DOG_ID,
+  ORDER_DOGS,
+  GET_DOG_NAME
 } from "./actions-types";
 
 export const fetchDogs = () => {
@@ -13,7 +15,7 @@ export const fetchDogs = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
-      console.log(data);
+      ;
       return dispatch({
         type: GET_DOGS,
         payload: data,
@@ -28,7 +30,7 @@ export const Temperaments = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
-      console.log("datos de temperamentos", data);
+      
       return dispatch({
         type: TEMPERAMENT,
         payload: data,
@@ -84,4 +86,29 @@ export const getId = (id)=>{
     }
   };
 
+}
+
+export const orderDogs = (order) => {
+  return {
+    type: ORDER_DOGS,
+    payload: order,
+  };
+};
+
+
+export const getDogsName = (name) => {
+  return async (dispatch) => {
+    try {
+      const {data} = await axios(`http://localhost:3001/dog/name`, {params: {name}});
+      console.log(data)
+      dispatch({
+        type: GET_DOG_NAME,
+        payload: data,
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+  
 }

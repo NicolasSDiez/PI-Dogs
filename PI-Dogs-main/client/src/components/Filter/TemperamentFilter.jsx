@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Temperaments } from '../../Redux/actions';
+import { Temperaments, filterByTemperament } from '../../Redux/actions';
 import styles from './TemperamentFilter.module.css';
 
-
-  const TemperamentFilter = ({ onChange }) => {
+const TemperamentFilter = () => {
   const [selectedTemperament, setSelectedTemperament] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   const handleTemperamentChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedTemperament(selectedValue);
-    onChange(selectedValue);
+    dispatch(filterByTemperament(selectedValue));
   };
 
   const temperamentos = useSelector(state => state.temperament);
-
-  useEffect(() => {
-    dispatch(Temperaments());
-  }, [dispatch]);
 
   return (
     <div className={styles.sortingOptions}>

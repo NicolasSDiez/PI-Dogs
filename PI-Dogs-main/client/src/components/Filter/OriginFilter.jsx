@@ -3,7 +3,7 @@ import styles from "../Filter/OriginFilter.module.css";
 import { useDispatch } from "react-redux";
 import { originFilter } from "../../Redux/actions";
 
-const FilterOrigin = ({ onFilterChange }) => {
+const FilterOrigin = () => {
   const [selectedOrigin, setSelectedOrigin] = useState(""); // Agrega el estado local
 
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const FilterOrigin = ({ onFilterChange }) => {
     const selectedValue = event.target.value;
     setSelectedOrigin(selectedValue); // Almacena la selección en el estado local
     dispatch(originFilter(selectedValue)); // Envía la selección al reducer
-    onFilterChange(selectedValue);
+    
   };
 
   return (

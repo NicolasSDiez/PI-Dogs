@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import style from './SearchBar.module.css';
+import { useDispatch } from 'react-redux';
+import { getDogsName } from '../../Redux/actions';
 
-const SearchBar = ({ onSearch }) => {
+
+const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
+  const dispatch = useDispatch();
   const handleSearch = () => {
-       onSearch(searchTerm);
+    dispatch(getDogsName(searchTerm))
 
   };
 
