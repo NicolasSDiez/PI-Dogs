@@ -36,21 +36,26 @@ const reducer = (state = initialState, actions) => {
       };
 
     case FILTER_ORIGIN:
-    const selectedOrigin = actions.payload === "AllOrigins" ? state.allDogs :
-    actions.payload ===  "Database" ? state.allDogs.filter((dog) =>
-    dog.isDB) : 
-    actions.payload === "API" &&  state.allDogs.filter((dog) =>
-    !dog.isDB)
-    return {
-      ...state,
-      dogs: selectedOrigin,
-    }
+      
+      const selectedOrigin =
+      actions.payload === "AllOrigins"
+        ? state.allDogs
+        : actions.payload === "Database"
+        ? state.allDogs.filter((dog) => isNaN(dog.id))
+        : actions.payload === "API"
+        ? state.allDogs.filter((dog) => !isNaN(dog.id))
+        : state.allDogs;
+        return {
+          ...state,
+          dogs: selectedOrigin,
+      
+      }
     
    
     case CREATE_DOG:
       return {
         ...state,
-        dogs: actions.payload,
+        dogs: selectedOrigin,
       };
 
     case TEMPERAMENT:
@@ -88,8 +93,7 @@ const reducer = (state = initialState, actions) => {
         };
       
 
-        case GET_DOG_NAME:
-          console.log(actions.payload);
+        case GET_DOG_NAME:        
         return {
         ...state,
         dogs: actions.payload,

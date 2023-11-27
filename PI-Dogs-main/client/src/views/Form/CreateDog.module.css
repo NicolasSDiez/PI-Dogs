@@ -7,7 +7,7 @@
   }
 
   .container{
-    
+    background-image: url('../../assets/img/furbg.webp');
     width: 100vw;
   }
   
@@ -27,15 +27,18 @@
     margin:  auto;
     width: 100%;
     max-width: 448px;
-    background-color: rgba(68, 50, 42, 0.3);
+    background-color: rgba(60, 54, 54, 0.745);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 48px;
     color: #FAFAFA;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
   
   .label {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     font-size: 14px;
     font-weight: 600;
   }
@@ -43,10 +46,10 @@
   .inputField {
     color: black;
     font-size: 16px;
-    line-height: 28px;
-    padding: 8px 16px;
-    width: 100%;
-    min-height: 44px;
+    line-height: 15px;
+    margin: 10px;
+    width: 28vw;
+    min-height: 20px;
     border: unset;
     border-radius: 4px;
     outline-color: rgba(84, 105, 212, 0.5);
@@ -58,6 +61,7 @@
       rgba(0, 0, 0, 0) 0px 0px 0px 0px,
       rgba(0, 0, 0, 0) 0px 0px 0px 0px,
       rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+      
   }
   
   .buttonContainer {
@@ -79,14 +83,15 @@
   }
   
   
-  .error-message {
+  .errorMessage {
     color: #FF0000; 
-    font-size: 14px;
+    font-size: 17px;
     margin-top: 5px; 
   }
   
-  .success-message {
+  .successMessage {
     color: #00FF00;
-    font-size: 14px;
+    font-size: 17px;
     margin-top: 5px; 
+
   }

@@ -12,12 +12,11 @@ const DogDetail = ()=>{
     useEffect(() => {
         dispatch(getId(id));
       }, [dispatch, id]);
-//   console.log("este es el" ,id)
-    
+       
+
+      
 return (
     <>
-    <Link to="/home"> Home
-      </Link> 
       {
         isNaN(id) ?
           
@@ -29,6 +28,10 @@ return (
               <p>Peso: {detail.peso}</p>
               <p>Temperamento: {detail.temperaments?.map((temp)=>temp.nombre + " ")}</p>
               <p>Longevidad: {detail.longevidad}</p>
+    <Link to={'/home'}>
+        <button className={style.linkDetailButton}>Volver</button>
+      </Link>
+      
             </div>
           
           :
@@ -40,6 +43,9 @@ return (
             <p>Peso:{detail.weight?.metric}</p>
             <p>Temperamento:{detail.temperament}</p>
             <p>Longevidad:{detail.life_span}</p>
+            <Link to={'/home'}>
+        <button className={style.linkDetailButton}>Volver</button>
+      </Link>
           </div>
       }
     </>

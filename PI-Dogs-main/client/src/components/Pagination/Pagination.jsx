@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Pagination.module.css";
 
 const Pagination = ({
-  currentPage, 
-  totalPages, 
+  currentPage,
+  totalPages,
   onPageChange,
   dogsPerPage,
-  maxPagesToShow = 5,
+  maxPagesToShow = 10,
 }) => {
   const handlePrevClick = () => {
     onPageChange(currentPage - 1);
@@ -54,9 +54,6 @@ const Pagination = ({
 
     return pageButtons;
   };
-
-  const startIndex = (currentPage - 1) * dogsPerPage;
-  const endIndex = startIndex + dogsPerPage;
 
   return (
     <div className={styles.pagination}>

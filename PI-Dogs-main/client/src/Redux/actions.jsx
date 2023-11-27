@@ -59,8 +59,7 @@ export const createDog = (dogData) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(endpoint, dogData);
-      console.log("El perro fue creado exitosamente");
-      return dispatch({
+            return dispatch({
         type: CREATE_DOG,
         payload: await fetchDogs(),
       });
@@ -76,8 +75,7 @@ export const getId = (id)=>{
   return async (dispatch) => {
     try {
       const {data} = await axios(`http://localhost:3001/dogs/${id}`);
-      //console.log("esto es el perruqui", data);
-      dispatch({
+            dispatch({
         type: GET_DOG_ID,
         payload: data,
       });
@@ -100,7 +98,7 @@ export const getDogsName = (name) => {
   return async (dispatch) => {
     try {
       const {data} = await axios(`http://localhost:3001/dog/name`, {params: {name}});
-      console.log(data)
+      
       dispatch({
         type: GET_DOG_NAME,
         payload: data,

@@ -1,28 +1,30 @@
-.container{
-    background-color: rgb(50, 50, 73);
-    border: 1px solid rgb(56, 5, 5);
+.container {
+
+    background-image: url('../../assets/img/furbg.webp');
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    /* flex-wrap: wrap;     */
-    height:auto;   
+    height: 500px;
     align-items: center;
     width: 400px;
     margin: 10px;
-    
-    
     text-align: center;
-    
+    border: 1px solid white;
+    line-height: 1.1;
 }
 
-.container h2,.container h3{
-    background-color:transparent;
-   padding: none;
+.img {
+    width: auto;
+    height: 200px;
+    padding: 10px;
+    border-radius: 15px;
 }
 
+.detailDog{
+    background-color: rgba(60, 54, 54, 0.367);
+    padding: 5px;    
+}
 
-.img{
-    width: 200px;
-    height: auto;
-    padding-top: 10px;
+.linkDetailButton{
+    margin: 15px;
 }

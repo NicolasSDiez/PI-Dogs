@@ -4,14 +4,14 @@ import { useDispatch } from "react-redux";
 import { orderDogs } from "../../Redux/actions";
 
 
-const SortingOptions = () => {
+const SortingOptions = ({onPageChange}) => {
   const [orderBy, setOrderBy] = useState('');
   const dispatch = useDispatch();
   
   const handleSortChange = (event) => {
     setOrderBy(event.target.value);
     dispatch(orderDogs(event.target.value));
-    console.log("este es mi valor",event.target.value)
+    onPageChange(1);
   };
 
   return (

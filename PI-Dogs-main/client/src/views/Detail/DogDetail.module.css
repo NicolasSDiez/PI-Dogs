@@ -1,16 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
 .card{
-    border: 2px solid rgb(183, 124, 124);
+    background-image: url('../../assets/img/furbg.webp'); 
+    border: 1.5px solid rgb(255, 255, 255);
     width: fit-content;
     height: fit-content;
-    border-radius: 15px;
-    
+    border-radius: 15px;    
     text-align: center;
-    
+    padding: 20px;
+    margin: 18px;
 }
 
-.card img{
-    
+.card img{    
     height: 300px;
     width: auto;
     border-radius: 15px
+    
+}
+
+.linkDetailButton {
+    /* Agrega estilos específicos para el enlace DETAIL */
+    color: #ffffff; /* Color del texto */
+    background-color: #232020;; /* Color de fondo */
+    padding: 8px 12px; /* Relleno */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    border-radius: 5px; /* Borde redondeado */
+    align-items: center;
+}
+
+.linkDetailButton:hover {
+    /* Estilos cuando el enlace DETAIL se encuentra en el estado de hover */
+    background-color: #44322A; /* Cambia el color de fondo en hover */
+    color: #FAFAFA;
+    border: 1.5px solid white
 }

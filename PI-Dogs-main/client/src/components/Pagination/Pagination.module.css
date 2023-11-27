@@ -14,6 +14,7 @@
     cursor: pointer;
     border-radius: 16px;
     transition: background-color 0.3s, color 0.3s;
+    margin: 0 4px;
   }
   
   .paginationButton:hover {
@@ -34,4 +35,8 @@
   
   .totalPages {
     color: #fafafa; 
+  }
+  .activePage {
+    background-color: rgba(84, 74, 74, 0.999); /* Cambia el color de fondo para la página activa */
+    color: #FAFAFA; /* Cambia el color del texto para la página activa */
   }

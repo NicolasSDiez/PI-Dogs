@@ -7,13 +7,7 @@ import { Temperaments, fetchDogs } from './Redux/actions';
 import { useDispatch } from 'react-redux';
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchDogs());
-    dispatch(Temperaments());
-    //setLoading(false)
-  }, [dispatch]);
+    
 
   const location = useLocation();
     return (
@@ -23,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/detail/:id" element={<DogDetail />} />
+        <Route path="/detail/:id" element={<DogDetail/>} />
         <Route path="/create-dog" element={<CreateDog />} />
       </Routes>
     </div>

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getDogsName } from '../../Redux/actions';
 
 
-const SearchBar = () => {
+const SearchBar = ({onPageChange}) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleInputChange = (event) => {
@@ -12,8 +12,11 @@ const SearchBar = () => {
   };
   const dispatch = useDispatch();
   const handleSearch = () => {
+    if(searchTerm.length === 0){ alert("Debe ingresar al menos un carácter")}
+    else{
     dispatch(getDogsName(searchTerm))
-
+    onPageChange(1)
+  }
   };
 
   return (

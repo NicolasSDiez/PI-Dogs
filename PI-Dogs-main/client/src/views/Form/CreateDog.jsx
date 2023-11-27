@@ -9,8 +9,7 @@ const CreateDog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperaments = useSelector(state => state.temperament);
-  // console.log("lista de temperamentos", temperaments);
-  const [form, setForm] = useState({
+    const [form, setForm] = useState({
     imagen: "",
     nombre: "",
     alturaMin: "",
@@ -150,7 +149,7 @@ const CreateDog = () => {
         setSuccessMessage("Dog created successfully!");
         setTimeout(() => {
           navigate(`/home`);
-        }, 1000);
+        }, 2000);
       })
       .catch((error) => {
         setErrorMessage("Error creating dog");
@@ -161,11 +160,8 @@ const CreateDog = () => {
   
 
   return (
-    <div className={styles.container}>
-     
 
-      {successMessage && <div className="success">{successMessage}</div>}
-
+    <div className={styles.container}>    
       <form className={styles.formContainer} onSubmit={handleSubmit}>
         <div>
           <label className={styles.label}>Image: </label>
@@ -175,11 +171,11 @@ const CreateDog = () => {
             name="imagen"
             value={form.imagen}
             onChange={handleInputChange}
-          />
+            />
         </div>
         {errorMessage && form.imagen === "" && (
-          <div className="error-message">{errorMessage}</div>
-        )}
+          <div className={styles.errorMessage}>{errorMessage}</div>
+          )}
 
         <div>
           <label className={styles.label}>Name: </label>
@@ -189,14 +185,14 @@ const CreateDog = () => {
             name="nombre"
             value={form.nombre}
             onChange={handleInputChange}
-          />
+            />
         </div>
         {errorMessage && form.nombre === "" && (
-          <div className="error-message">{errorMessage}</div>
-        )}
+          <div className={styles.errorMessage}>{errorMessage}</div>
+          )}
         {errorMessage && form.nombre.length > 20 && (
-          <div className="error-message">{errorMessage}</div>
-        )}
+          <div className={styles.errorMessage}>{errorMessage}</div>
+          )}
 
         <div>
           <label className={styles.label}>Min Height: </label>
@@ -206,8 +202,8 @@ const CreateDog = () => {
             name="alturaMin"
             value={form.alturaMin}
             onChange={handleInputChange}
-          />
-          {minHeightError && <div className="error-message">{minHeightError}</div>}
+            />
+          {minHeightError && <div className={styles.errorMessage}>{minHeightError}</div>}
         </div>
 
         <div>
@@ -218,8 +214,8 @@ const CreateDog = () => {
             name="alturaMax"
             value={form.alturaMax}
             onChange={handleInputChange}
-          />
-          {maxHeightError && <div className="error-message">{maxHeightError}</div>}
+            />
+          {maxHeightError && <div className={styles.errorMessage}>{maxHeightError}</div>}
         </div>
 
         <div>
@@ -230,8 +226,8 @@ const CreateDog = () => {
             name="pesoMin"
             value={form.pesoMin}
             onChange={handleInputChange}
-          />
-          {minWeightError && <div className="error-message">{minWeightError}</div>}
+            />
+          {minWeightError && <div className={styles.errorMessage}>{minWeightError}</div>}
         </div>
 
         <div>
@@ -242,8 +238,8 @@ const CreateDog = () => {
             name="pesoMax"
             value={form.pesoMax}
             onChange={handleInputChange}
-          />
-          {maxWeightError && <div className="error-message">{maxWeightError}</div>}
+            />
+          {maxWeightError && <div className={styles.errorMessage}>{maxWeightError}</div>}
         </div>
 
         <div>
@@ -254,11 +250,11 @@ const CreateDog = () => {
             name="longevidad"
             value={form.longevidad}
             onChange={handleInputChange}
-          />
+            />
         </div>
         {errorMessage && isNaN(form.longevidad) && (
-          <div className="error-message">{errorMessage}</div>
-        )}
+          <div className={styles.errorMessage}>{errorMessage}</div>
+          )}
 
         <div>
           <label>
@@ -272,6 +268,7 @@ const CreateDog = () => {
             </select>
           </label>
         </div>
+      {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
 
         <button className={styles.buttonContainer} type="submit">
           Create Dog
