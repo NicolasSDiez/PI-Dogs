@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../Form/CreateDog.module.css";
+import validateForm from "./ValidateForm";
 
 const CreateDog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperaments = useSelector(state => state.temperament);
-    const [form, setForm] = useState({
+  const [form, setForm] = useState({
     imagen: "",
     nombre: "",
     alturaMin: "",
@@ -20,53 +21,16 @@ const CreateDog = () => {
     temperamento: [],
   });
 
-  useEffect(() => {    
+  useEffect(() => {
     dispatch(Temperaments());
   }, [dispatch]);
   
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [minHeightError, setMinHeightError] = useState("");
-  const [maxHeightError, setMaxHeightError] = useState("");
-  const [minWeightError, setMinWeightError] = useState("");
-  const [maxWeightError, setMaxWeightError] = useState("");
-  
-  
-  const validateName = (name) => {
-    if (/\d/.test(name)) {
-      return "Name should not contain numbers";
-    }
-    return "";
-  };
 
-  const validateForm = (formData) => {
-    const { nombre, alturaMin, alturaMax, pesoMin, pesoMax } = formData;
-    const errors = {};
 
-    const nameError = validateName(nombre);
-    if (nameError) {
-      errors.nombre = nameError;
-    }
+  const [errorMessage, setErrorMessage] = useState({});
+  const [successMessage, setSuccessMessage] = useState("")
 
-    const alturaError = validateMinMax(alturaMin, alturaMax);
-    if (alturaError) {
-      errors.alturaMin = alturaError;
-    }
 
-    const pesoError = validateMinMax(pesoMin, pesoMax);
-    if (pesoError) {
-      errors.pesoMin = pesoError;
-    }
-
-    return errors;
-  };
-
-  const validateMinMax = (min, max) => {
-    if (parseInt(min) > parseInt(max)) {
-      return "Minimum value should not be greater than Maximum value";
-    }
-    return "";
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -74,11 +38,16 @@ const CreateDog = () => {
       ...form,
       [name]: value,
     });
+
+    setErrorMessage(validateForm({
+      ...form,
+      [name]: value,
+    }))
   };
 
   const handleTemperamentChange = (event) => {
     const selectTemperament = event.target.value;
-  
+
     setForm((prevForm) => ({
       ...prevForm,
       temperamento: prevForm.temperamento.includes(selectTemperament)
@@ -90,61 +59,18 @@ const CreateDog = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const nombre = form.nombre.trim();
-
-    if (nombre === "") {
-      setErrorMessage("Please enter a name");
-      return;
-    }
-
-    if (nombre.length > 20) {
-      setErrorMessage("Name should not exceed 20 characters");
-      return;
-    }
-
-    if (
-      form.alturaMin === "" ||
-      form.alturaMax === "" ||
-      form.pesoMin === "" ||
-      form.pesoMax === "" ||
-      isNaN(form.longevidad)
-    ) {
-      setErrorMessage(
-        "Please enter valid values for Height, Weight, and Lifespan"
-      );
-      return;
-    }
-
-    const alturaMin = parseInt(form.alturaMin);
-    const alturaMax = parseInt(form.alturaMax);
-    const pesoMin = parseInt(form.pesoMin);
-    const pesoMax = parseInt(form.pesoMax);
-
-    if (alturaMin >= alturaMax) {
-      setMinHeightError("Minimum Height should be less than Maximum Height");
-      return;
-    } else {
-      setMinHeightError("");
-    }
-
-    if (pesoMin >= pesoMax) {
-      setMinWeightError("Minimum Weight should be less than Maximum Weight");
-      return;
-    } else {
-      setMinWeightError("");
-    }
 
     const newDog = {
       imagen: form.imagen,
-      nombre: nombre,
-      altura: `${alturaMin} - ${alturaMax}`,
-      peso: `${pesoMin} - ${pesoMax}`,
+      nombre: form.nombre,
+      altura: `${form.alturaMin} - ${form.alturaMax}`,
+      peso: `${form.pesoMin} - ${form.pesoMax}`,
       longevidad: parseInt(form.longevidad),
       temperaments: form.temperamento
     };
 
     dispatch(createDog(newDog))
-    
+
       .then(() => {
         setSuccessMessage("Dog created successfully!");
         setTimeout(() => {
@@ -157,11 +83,11 @@ const CreateDog = () => {
       });
   };
 
-  
+
 
   return (
 
-    <div className={styles.container}>    
+    <div className={styles.container}>
       <form className={styles.formContainer} onSubmit={handleSubmit}>
         <div>
           <label className={styles.label}>Image: </label>
@@ -171,11 +97,11 @@ const CreateDog = () => {
             name="imagen"
             value={form.imagen}
             onChange={handleInputChange}
-            />
+          />
         </div>
-        {errorMessage && form.imagen === "" && (
-          <div className={styles.errorMessage}>{errorMessage}</div>
-          )}
+        {!errorMessage.imagen ? "" : (
+          <div className={styles.errorMessage}>{errorMessage.imagen}</div>
+        )}
 
         <div>
           <label className={styles.label}>Name: </label>
@@ -185,14 +111,13 @@ const CreateDog = () => {
             name="nombre"
             value={form.nombre}
             onChange={handleInputChange}
-            />
+          />
         </div>
-        {errorMessage && form.nombre === "" && (
-          <div className={styles.errorMessage}>{errorMessage}</div>
-          )}
-        {errorMessage && form.nombre.length > 20 && (
-          <div className={styles.errorMessage}>{errorMessage}</div>
-          )}
+        {errorMessage.nombre && (
+          <div className={styles.errorMessage}>{errorMessage.nombre}</div>
+        )}
+
+
 
         <div>
           <label className={styles.label}>Min Height: </label>
@@ -202,8 +127,8 @@ const CreateDog = () => {
             name="alturaMin"
             value={form.alturaMin}
             onChange={handleInputChange}
-            />
-          {minHeightError && <div className={styles.errorMessage}>{minHeightError}</div>}
+          />
+
         </div>
 
         <div>
@@ -214,8 +139,8 @@ const CreateDog = () => {
             name="alturaMax"
             value={form.alturaMax}
             onChange={handleInputChange}
-            />
-          {maxHeightError && <div className={styles.errorMessage}>{maxHeightError}</div>}
+          />
+          {errorMessage.alturaMin && <div className={styles.errorMessage}>{errorMessage.alturaMin}</div>}
         </div>
 
         <div>
@@ -226,8 +151,8 @@ const CreateDog = () => {
             name="pesoMin"
             value={form.pesoMin}
             onChange={handleInputChange}
-            />
-          {minWeightError && <div className={styles.errorMessage}>{minWeightError}</div>}
+          />
+
         </div>
 
         <div>
@@ -238,8 +163,8 @@ const CreateDog = () => {
             name="pesoMax"
             value={form.pesoMax}
             onChange={handleInputChange}
-            />
-          {maxWeightError && <div className={styles.errorMessage}>{maxWeightError}</div>}
+          />
+          {errorMessage.pesoMin && <div className={styles.errorMessage}>{errorMessage.pesoMin}</div>}
         </div>
 
         <div>
@@ -250,11 +175,11 @@ const CreateDog = () => {
             name="longevidad"
             value={form.longevidad}
             onChange={handleInputChange}
-            />
+          />
         </div>
-        {errorMessage && isNaN(form.longevidad) && (
-          <div className={styles.errorMessage}>{errorMessage}</div>
-          )}
+        {errorMessage.longevidad && (
+          <div className={styles.errorMessage}>{errorMessage.longevidad}</div>
+        )}
 
         <div>
           <label>
@@ -268,7 +193,7 @@ const CreateDog = () => {
             </select>
           </label>
         </div>
-      {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
+        {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
 
         <button className={styles.buttonContainer} type="submit">
           Create Dog

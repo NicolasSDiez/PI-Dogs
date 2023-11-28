@@ -14,17 +14,7 @@ const createNewDog = async (imagen, nombre, altura, peso, longevidad, temperamen
             longevidad,
             isDB: true
         });
-        //si en dogdata existe la prop temperament y si esta es un array con al menos 1 elem ( hay)
-        // if (temperaments && temperaments.length > 0) { 
-        //     const temperaments = await Temperaments.findAll({//busca en el modelo de la BDD. findall=>(ORM-sequelize)
-        //         where: {
-        //             name: temperaments,
-        //         }
-        //     })
-        //     await newDog.setTemperaments(temperaments);
-        // }
-        
-     
+                   
             const temperamento = await Temperaments.findAll({
                 where: {
                     nombre: temperaments,

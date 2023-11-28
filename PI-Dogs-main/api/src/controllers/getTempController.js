@@ -20,15 +20,9 @@ const getTempFromApi = async () => {
             const [temp, created] = await Temperaments.findOrCreate({where: {nombre:temperament}, default: {nombre:temperament}})
             return temp;
         })) 
-        console.log(TemperamentsDB)
+        
         return TemperamentsDB;
-    //    return await Temperament.create(temperaments)
-        // const TemperamentsDB = temperaments.map(async temperament => {
-        //     const temp = await Temperament.bulkCreate(temperament)
-        //     return temp;
-        // }) 
-        // console.log(TemperamentsDB)
-        // return TemperamentsDB;
+    
     } catch (error) {
         throw new Error("No anda")
     }

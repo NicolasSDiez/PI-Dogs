@@ -1,6 +1,8 @@
 const axios = require('axios')
 const URL_BASE = 'https://api.thedogapi.com/v1'
 const IMAGE_URL = 'https://cdn2.thedogapi.com'
+const { Dog, Temperaments } = require('../db')
+const { Op } = require("sequelize")
 
 const getDogsByName = async(name) => {
     try {
@@ -16,9 +18,24 @@ const getDogsByName = async(name) => {
                 longevidad: breed.life_span,
                 temperamento: breed.temperament ? breed.temperament.split(', ') : [],
             }
+
         })
-        
-        return dogs
+        const dogsBDD = await Dog.findAll({
+            where: {nombre: {[Op.iLike]: `%${name}%`}}, // metodo de sequelize
+            include :{
+                model: Temperaments,
+                attributes: {exclude: ["UUID"]},
+                through: {attributes: []}
+
+            }})
+            if (!dogs || dogs.length === 0) {
+                return dogsBDD;
+            } else if (dogsBDD && dogsBDD.length > 0) {
+                return [...dogs, ...dogsBDD];
+            } else {
+                return dogs;
+            }
+
     } catch (error) {
         throw error
     }
