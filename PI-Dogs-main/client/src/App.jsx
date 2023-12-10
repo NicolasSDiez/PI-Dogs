@@ -5,6 +5,9 @@ import './App.css'
 import NavBar from './Components/NavBar/NavBar';
 import { Temperaments, fetchDogs } from './Redux/actions';
 import { useDispatch } from 'react-redux';
+import axios from "axios"
+
+axios.defaults.baseURL = 'http://localhost:3001/'
 
 function App() {
     

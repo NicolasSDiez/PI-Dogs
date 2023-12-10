@@ -11,7 +11,7 @@ import {
 } from "./actions-types";
 
 export const fetchDogs = () => {
-  const endpoint = "http://localhost:3001/dogs";
+  const endpoint = "/dogs";
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -26,7 +26,7 @@ export const fetchDogs = () => {
   };
 };
 export const Temperaments = () => {
-  const endpoint = "http://localhost:3001/temperaments";
+  const endpoint = "/temperaments";
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -55,7 +55,7 @@ export const originFilter = (origin) => {
 }
 
 export const createDog = (dogData) => {
-  const endpoint = "http://localhost:3001/dogs";
+  const endpoint = "/dogs";
   return async (dispatch) => {
     try {
       const { data } = await axios.post(endpoint, dogData);
@@ -74,7 +74,7 @@ export const createDog = (dogData) => {
 export const getId = (id)=>{
   return async (dispatch) => {
     try {
-      const {data} = await axios(`http://localhost:3001/dogs/${id}`);
+      const {data} = await axios(`/dogs/${id}`);
             dispatch({
         type: GET_DOG_ID,
         payload: data,
@@ -97,7 +97,7 @@ export const orderDogs = (order) => {
 export const getDogsName = (name) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios(`http://localhost:3001/dog/name`, {params: {name}});
+      const {data} = await axios(`/dog/name`, {params: {name}});
       
       dispatch({
         type: GET_DOG_NAME,
